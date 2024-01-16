@@ -91,8 +91,8 @@ jobs:
           aws eks update-kubeconfig --region us-west-2 --name my-eks-cluster
           mkdir -p k8s
           export ECR_REPOSITORY_URL="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/my-spring-boot-app:${GITHUB_SHA}"
-          envsubst < k8s-deployment.yaml > k8s/k8s-deployment.yaml
+          envsubst < k8s-deploy.yaml > k8s/k8s-deploy.yaml
           echo "resources:" > k8s/kustomization.yaml
-          echo "- k8s-deployment.yaml" >> k8s/kustomization.yaml
+          echo "- k8s-deploy.yaml" >> k8s/kustomization.yaml
           kubectl kustomize k8s | kubectl apply -f - --force         
         
