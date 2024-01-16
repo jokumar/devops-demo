@@ -65,7 +65,7 @@ jobs:
           path: target
 
       - name: Build Docker image
-        run : docker build -t 561833867073.dkr.ecr.us-west-2.amazonaws.com/my-spring-boot-app
+        run : docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/my-spring-boot-app .
         
       - name: Install and configure AWS CLI
         run: |
